@@ -1,0 +1,82 @@
+---
+import LangPicker from "../components/LangPicker.astro";
+---
+<nav>
+    <ul>
+        <li>
+            <a class:list={['mb-montserrat', {'current': Astro.url.pathname === '/'}]} href="/">home</a>
+        </li>
+        <li>
+            <a class:list={['mb-montserrat', {'current': Astro.url.pathname === '/test-page'}]} href="/test-page">test-page</a>
+        </li>
+    </ul>
+    <LangPicker />
+</nav>
+<style is:global lang="scss">
+    @use '../styles/mixins.scss' as *;
+    
+    nav {
+        align-self: end;
+        margin-bottom: 4rem;
+        display: flex;
+        align-items: center;
+
+        ul {
+            li {
+                display: inline-block;
+                margin: 0 0.8rem;
+
+                a {
+                    font-size: 2rem;
+                    font-weight: 300;
+                    text-transform: capitalize;
+                    color: black;
+
+                    &.current {
+                        font-weight: 500;
+                        border-bottom: 0.1rem black solid;
+                        padding-bottom: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        #lang-picker {
+            min-width: 7rem;
+            position: relative;
+            border: 0.1rem solid black;
+            border-radius: 2.5rem;
+            padding: 1rem 2rem;
+            @include withRtl('margin', 0 0 0 5rem, 0 5rem 0 0);
+
+            #box-ctrls {
+                width: 100%;
+                display: flex;
+                align-items: center;
+
+                #picked {
+                    width: 100%;
+                    font-size: 2rem;
+                    font-weight: 300;
+                    text-transform: capitalize;
+                }
+
+                img {
+                    width: 2rem;
+                    cursor: pointer;
+                }
+            }
+
+            #box-list {
+                position: absolute;
+                padding-top: 2rem;
+
+                li {
+                    display: block;
+                    font-weight: 300;
+                }
+            }
+
+        }
+    }
+</style>

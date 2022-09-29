@@ -1,0 +1,19 @@
+---
+const translationsMeta = await Astro.glob('../locals/meta.json');
+const langs = translationsMeta[0]['default'];
+
+import caretDownSolid from '../images/caret-down-solid.svg';
+---
+<div id="lang-picker" x-data="{ open: false }">
+	<div id="box-ctrls">
+		<div id="picked" class="mb-montserrat">En</div>
+		<img src={caretDownSolid} alt="" @click="open = !open" />
+	</div>
+	<ul id="box-list" x-show="open">
+		{
+			langs.map(lang => {
+				return <li><a class="mb-montserrat" href="#">{`${lang.target}`}</a></li>
+			})
+		}
+	</ul>
+</div>
