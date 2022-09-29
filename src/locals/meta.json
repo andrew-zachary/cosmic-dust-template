@@ -1,0 +1,8 @@
+[
+    {
+        "name": "en", "target": "en", "dir": "ltr"
+    },
+    {
+        "name": "ar", "target": "العربية", "dir": "rtl"
+    }
+]
