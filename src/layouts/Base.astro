@@ -1,16 +1,17 @@
 ---
-export interface Props {
-	title: string;
-	slug: string;
-}
+// select props if no found use default
+const { title } = Astro.props;
+const { lang } = Astro.params;
 
-const { title, slug } = Astro.props as Props;
+// search for Lang Meta if no found select default
+const translationsMeta = await Astro.glob('../locals/meta.json');
+const langMeta = translationsMeta[0]['default'].filter(metaLang => metaLang.name === lang)[0];
 
 import Nav from './Nav.astro';
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang} dir={langMeta.dir}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -19,6 +20,7 @@ import Nav from './Nav.astro';
 		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700&family=Poppins:wght@500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 		<script src="//unpkg.com/alpinejs" defer></script>
 	</head>
 	<body>
@@ -66,10 +68,18 @@ import Nav from './Nav.astro';
 
 	.mb-montserrat {
 		font-family: 'Montserrat', sans-serif;
+		
+		[lang='ar'] & {
+			font-family: 'Tajawal', sans-serif;
+		}
 	}
 
 	.mb-poppins {
 		font-family: 'Poppins', sans-serif;
+
+		[lang='ar'] & {
+			font-family: 'Vazirmatn', sans-serif;
+		}
 	}
 
 	.mb-space-holder {
@@ -89,6 +99,7 @@ import Nav from './Nav.astro';
 		main {
 			height: 100%;
 			width: 100%;
+			@include withRtl('padding', 0 0 0 1rem, 0 1rem 0 0);
 		}
 
 		.main-header {
@@ -99,11 +110,15 @@ import Nav from './Nav.astro';
 		}
 
 		.main-para {
-			font-size: 2.8rem;
+			font-size: 2.4rem;
 			font-weight: 300;
 
 			margin-top: 1.2rem;
 			@include withRtl('padding', 0 0 0 1.5rem, 0 1.5rem 0 0);
 		}
 	}
+
+	[x-cloak] {
+    	display: none!important;
+    }
 </style>

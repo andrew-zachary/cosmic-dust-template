@@ -1,0 +1,24 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../../components/test-page/section.astro';
+
+export async function getStaticPaths() {
+    const translationsMeta = await Astro.glob('../../locals/meta.json');
+
+    return translationsMeta[0]['default'].map(metaLang => {
+        return {params: {lang: metaLang.name}};
+    });
+}
+
+const {lang} = Astro.params;
+const title = {
+    'ar': 'صفحة مؤقتة',
+    'en': 'test page'
+};
+---
+
+<Base title={title[lang]}>
+    <Section />
+</Base>
+
+<style></style>

@@ -1,13 +1,26 @@
 ---
-import LangPicker from "../components/LangPicker.astro";
+import LangPicker from "../components/layout/LangPicker.astro";
+
+const {lang} = Astro.params;
+
+const content = {
+    'en': {
+        'home': 'home',
+        'test_page': 'test page'
+    },
+    'ar': {
+        'home': 'إبدأ',
+        'test_page': 'صفحة مؤقتة'
+    },
+}
 ---
 <nav>
     <ul>
         <li>
-            <a class:list={['mb-montserrat', {'current': Astro.url.pathname === '/'}]} href="/">home</a>
+            <a class:list={['mb-montserrat', {'current': Astro.url.pathname === `/${lang}`}]} href={`/${lang}`}>{content[lang]['home']}</a>
         </li>
         <li>
-            <a class:list={['mb-montserrat', {'current': Astro.url.pathname === '/test-page'}]} href="/test-page">test-page</a>
+            <a class:list={['mb-montserrat', {'current': Astro.url.pathname === `/${lang}/test-page`}]} href={`/${lang}/test-page`}>{content[lang]['test_page']}</a>
         </li>
     </ul>
     <LangPicker />
@@ -34,7 +47,7 @@ import LangPicker from "../components/LangPicker.astro";
 
                     &.current {
                         font-weight: 500;
-                        border-bottom: 0.1rem black solid;
+                        border-bottom: 0.2rem black solid;
                         padding-bottom: 0.5rem;
                     }
                 }
@@ -42,34 +55,34 @@ import LangPicker from "../components/LangPicker.astro";
         }
 
         #lang-picker {
-            min-width: 7rem;
+            min-width: 8rem;
             position: relative;
             border: 0.1rem solid black;
             border-radius: 2.5rem;
-            padding: 1rem 2rem;
+            padding: 0.1rem 1rem;
             @include withRtl('margin', 0 0 0 5rem, 0 5rem 0 0);
 
             #box-ctrls {
                 width: 100%;
                 display: flex;
                 align-items: center;
+                cursor: pointer;
 
                 #picked {
                     width: 100%;
                     font-size: 2rem;
-                    font-weight: 300;
+                    font-weight: 500;
                     text-transform: capitalize;
                 }
 
                 img {
-                    width: 2rem;
-                    cursor: pointer;
+                    width: 1.25rem;
                 }
             }
 
             #box-list {
                 position: absolute;
-                padding-top: 2rem;
+                padding-top: 0.5rem;
 
                 li {
                     display: block;

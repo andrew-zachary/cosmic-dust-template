@@ -1,0 +1,18 @@
+---
+const {lang} = Astro.params;
+
+const content = {
+    'en': {
+        'title': 'Test Page',
+        'p': 'This is a test page can be deleted.'
+    },
+    'ar': {
+        'title': 'صفحة مؤقتة',
+        'p': 'هذه صفحة مؤقتة يمكن الحذف .'
+    }
+};
+---
+<section>
+    <h1 class="main-header mb-poppins">{content[lang].title}</h1>
+    <p class="main-para mb-montserrat">{content[lang].p}</p>
+</section>
