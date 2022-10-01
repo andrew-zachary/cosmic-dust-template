@@ -14,7 +14,7 @@ const {lang} = Astro.params;
 	<ul id="box-list" x-cloak x-show="open">
 		{
 			langs.filter(filteredLang => filteredLang.name !== lang).map(mappedLang => {
-				return <li><a class="mb-montserrat" href={`/${mappedLang.name}`}>{`${mappedLang.target}`}</a></li>
+				return <li><a class="mb-montserrat" href={`/${mappedLang.name}/`}>{`${mappedLang.target}`}</a></li>
 			})
 		}
 	</ul>

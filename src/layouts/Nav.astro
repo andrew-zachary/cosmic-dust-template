@@ -4,24 +4,25 @@ import LangPicker from "../components/layout/LangPicker.astro";
 const {lang} = Astro.params;
 
 const content = {
-    'en': {
-        'home': 'home',
-        'test_page': 'test page'
-    },
-    'ar': {
-        'home': 'إبدأ',
-        'test_page': 'صفحة مؤقتة'
-    },
+    'en': [
+        {'name': 'home', 'slug': ''},
+        {'name': 'test page', 'slug': 'test-page'},
+    ],
+    'ar': [
+        {'name': 'إبدأ', 'slug': ''},
+        {'name': 'صفحة إختبار', 'slug': 'test-page'},
+    ]
 }
 ---
 <nav>
     <ul>
-        <li>
-            <a class:list={['mb-montserrat', {'current': Astro.url.pathname === `/${lang}`}]} href={`/${lang}`}>{content[lang]['home']}</a>
-        </li>
-        <li>
-            <a class:list={['mb-montserrat', {'current': Astro.url.pathname === `/${lang}/test-page`}]} href={`/${lang}/test-page`}>{content[lang]['test_page']}</a>
-        </li>
+        {
+            content[lang].map(link => {
+                return <li>
+                    <a class:list={['mb-montserrat', {'current': Astro.url.pathname === `/${lang}/${link.slug}`}]} href={`/${lang}/${link.slug}`}>{link.name}</a>
+                </li>
+            })
+        }
     </ul>
     <LangPicker />
 </nav>
@@ -73,6 +74,11 @@ const content = {
                     font-size: 2rem;
                     font-weight: 500;
                     text-transform: capitalize;
+
+                    [lang='ar'] & {
+                        line-height: 2.2rem;
+    		            height: 1.8rem;
+                    }
                 }
 
                 img {
