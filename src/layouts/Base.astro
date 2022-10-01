@@ -4,8 +4,8 @@ const { title } = Astro.props;
 const { lang } = Astro.params;
 
 // search for Lang Meta if no found select default
-const translationsMeta = await Astro.glob('../locals/meta.json');
-const langMeta = translationsMeta[0]['default'].filter(metaLang => metaLang.name === lang)[0];
+import translationsMeta from '../locals/meta.json';
+const langMeta = translationsMeta.filter(metaLang => metaLang.name === lang)[0];
 
 import Nav from './Nav.astro';
 ---

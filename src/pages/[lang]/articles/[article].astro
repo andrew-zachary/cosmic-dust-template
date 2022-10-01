@@ -1,0 +1,36 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Section from '../../../components/articles/article/section.astro';
+
+import translationsMeta from '../../../locals/meta.json';
+
+export async function getStaticPaths() {
+    const mdxFiles = await Astro.glob('../../../data/*.mdx');
+
+    const params = [];
+
+    mdxFiles.forEach(mdxFile => {
+
+        translationsMeta.forEach(metaLang => {
+
+            params.push({params: {
+                lang: metaLang.name, 
+                article: mdxFile['content'][metaLang.name]['slug']
+            }});
+        });
+    });
+
+    return params;
+}
+
+const {lang, article} = Astro.params;
+
+const mdxFiles = await Astro.glob('../../../data/*.mdx');
+const page = mdxFiles.filter(mdxFile => mdxFile['content'].refs.includes(article))[0];
+---
+
+<Base title={page['content'][lang].title}>
+    <Section pageContent={page['content'][lang]} />
+</Base>
+
+<style></style>

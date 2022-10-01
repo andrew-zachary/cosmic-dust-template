@@ -1,0 +1,15 @@
+---
+const {lang} = Astro.params;
+
+const content = {
+    'en': {
+        'title': 'articles',
+    },
+    'ar': {
+        'title': 'مقالات',
+    }
+};
+---
+<section>
+    <h1 class="main-header mb-poppins">{content[lang].title}</h1>
+</section>
