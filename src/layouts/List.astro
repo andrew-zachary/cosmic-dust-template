@@ -5,9 +5,7 @@ const {lang} = Astro.params;
 
 <ul id="articles-list">
     {
-        mdxFiles.sort((a, b) => {
-            return a['content']['order'] - b['content']['order'];
-        }).map(mdxFile => <li>
+        mdxFiles.map(mdxFile => <li>
             <a href={`/${lang}/articles/${mdxFile['content'][lang]['slug']}`}>
                 <h2 class="mb-montserrat">{mdxFile['content'][lang]['title']}</h2>
             </a>

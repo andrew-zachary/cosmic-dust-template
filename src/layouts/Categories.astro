@@ -10,7 +10,7 @@ const content = {
 ---
 <ul id="cats-list">
     <li>
-        <a class:list={["mb-poppins", {"current": selectedCat === null}]} href={`/${lang}/articles`}>{content[lang].name}</a>
+        <a class:list={["mb-poppins", {"current": selectedCat === null}]} href={`/${lang}/articles/1`}>{content[lang].name}</a>
     </li>
     {
         Object.keys(cats).map(cat => {
@@ -24,7 +24,7 @@ const content = {
     @use '../styles/mixins.scss' as *;
 
     #cats-list{
-        margin: 2rem 0 5rem 0;
+        margin: 2rem 0 0rem 0;
 
         li {
             display: inline-block;

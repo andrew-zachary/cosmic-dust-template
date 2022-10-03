@@ -1,0 +1,41 @@
+---
+import Base from '../../../layouts/Base.astro';
+import List from '../../../layouts/List.astro';
+import Categories from '../../../layouts/Categories.astro';
+import Paginator from '../../../layouts/Paginator.astro';
+
+import Section from '../../../components/articles/index/section.astro';
+
+import translationsMeta from '../../../locals/meta.json';
+import cats from '../../../locals/cats.json';
+
+const {lang} = Astro.params;
+const {data, lastPage, currentPage} = Astro.props.page;
+const title = {'ar': 'مقالات','en': 'articles'};
+
+export async function getStaticPaths({paginate}) {
+    const mdxFiles = await Astro.glob('../../../data/*.mdx');
+    const sortedMdxFiles = mdxFiles.sort((a, b) => {
+        return a['content']['order'] - b['content']['order'];
+    });
+
+    let totalPaginate = [];
+
+    Object.keys(translationsMeta).forEach(metaLang => {
+        totalPaginate.push(
+            paginate(sortedMdxFiles, { pageSize: 5, params: {lang: translationsMeta[metaLang].name} })
+        );
+    });
+
+    return totalPaginate;
+}
+---
+
+<Base title={title[lang]}>
+    <Section />
+    <Categories selectedCat={null} cats={cats} />
+    <Paginator lastPage={lastPage} currentPage={currentPage} />
+    <List mdxFiles={data} />
+</Base>
+
+<style></style>

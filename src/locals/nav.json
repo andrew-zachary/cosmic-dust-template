@@ -4,8 +4,8 @@
         "ar": {"name": "إبدأ", "slug": ""}
     },
     "2": {
-        "en": {"name": "articles", "slug": "articles"},
-        "ar": {"name": "مقالات", "slug": "articles"}
+        "en": {"name": "articles", "slug": "articles/1"},
+        "ar": {"name": "مقالات", "slug": "articles/1"}
     },
     "3": {
         "en": {"name": "test page", "slug": "test-page"},
