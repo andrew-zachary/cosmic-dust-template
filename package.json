@@ -1,8 +1,11 @@
 {
-  "name": "@example/basics",
+  "name": "astro-build-multilingual-template",
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "description": "This is a multilingual template for quickly building websites with a translated UI and Content using Astro-build",
+  "keywords": ["astro-build", "SSG", "MDX", "multilingual-mpa", "MPA", "multilingual-website", "website-template"],
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

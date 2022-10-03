@@ -1,0 +1,38 @@
+---
+const {lang} = Astro.params;
+const {cats, selectedCat} = Astro.props;
+---
+<ul id="cats-list">
+    {
+        Object.keys(cats).map(cat => {
+            return <li>
+                <a class:list={["mb-poppins", {"current": cat === selectedCat}]} href={`/${lang}/articles/${cats[cat][lang].slug}`}>{cats[cat][lang].name}</a>
+            </li>
+        })
+    }
+</ul>
+<style is:global lang="scss">
+    @use '../styles/mixins.scss' as *;
+
+    #cats-list{
+        margin: 2rem 0 5rem 0;
+
+        li {
+            display: inline-block;
+            a {
+                font-size: 2rem;
+                font-weight: 300;
+                color: black;
+                text-transform: capitalize;
+                @include withRtl('margin', 0 0 0 3rem, 0 3rem 0 0);
+
+                &.current {
+                    font-weight: bold;
+                    padding: 0rem 0.8rem;
+                    border: 0.1rem solid black;
+                    border-radius: 2.5rem;
+                }
+            }
+        }
+    }
+</style>

@@ -1,8 +1,4 @@
 [
-    {
-        "name": "en", "target": "en", "dir": "ltr"
-    },
-    {
-        "name": "ar", "target": "العربية", "dir": "rtl"
-    }
+    {"name": "en", "target": "en", "dir": "ltr"},
+    {"name": "ar", "target": "العربية", "dir": "rtl"}
 ]

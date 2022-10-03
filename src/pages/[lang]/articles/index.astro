@@ -1,8 +1,12 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import List from '../../../layouts/List.astro';
+import Categories from '../../../layouts/Categories.astro';
+
 import Section from '../../../components/articles/index/section.astro';
 
 import translationsMeta from '../../../locals/meta.json';
+import cats from '../../../locals/cats.json';
 
 const {lang} = Astro.params;
 const title = {'ar': 'مقالات','en': 'articles'};
@@ -18,54 +22,8 @@ export async function getStaticPaths() {
 
 <Base title={title[lang]}>
     <Section />
-    <ul id="articles-list">
-        {
-            mdxFiles.sort((a, b) => {
-                return a['content']['order'] - b['content']['order'];
-            }).map(mdxFile => <li>
-                <a href={`/${lang}/articles/${mdxFile['content'][lang]['slug']}`}>
-                    <h2 class="mb-montserrat">{mdxFile['content'][lang]['title']}</h2>
-                </a>
-            </li>)
-        }
-    </ul>
+    <Categories cats={cats} />
+    <List mdxFiles={mdxFiles} />
 </Base>
 
-<style lang="scss" is:global>
-    @use '../../../styles/mixins.scss' as *;
-
-    #articles-list {
-        margin: 1.5rem 0 2rem 0;
-
-        li {
-            margin-bottom: 2rem;
-
-            a {
-
-                h2 {
-                    font-size: 2.8rem;
-                    font-weight: 400;
-                    color: black;
-                    border-bottom: 0.1rem rgba(0, 0, 0, 0.259) solid;
-                    padding-bottom: 1rem;
-                    @include withRtl('margin', 0 0 0 3rem, 0 3rem 0 0);
-
-                    &:hover {
-                        border-bottom: 0.1rem black solid;
-                    }
-                }
-            }
-
-            &:last-child {
-                margin: 0;
-
-                a {
-
-                    h2 {
-                        border-bottom: unset;
-                    }
-                }
-            }
-        }
-    }
-</style>
+<style></style>
