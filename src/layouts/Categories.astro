@@ -1,8 +1,17 @@
 ---
 const {lang} = Astro.params;
 const {cats, selectedCat} = Astro.props;
+
+// link to back to articles
+const content = {
+    "en": {"name": "all"},
+    "ar": {"name": "الكل"}
+}
 ---
 <ul id="cats-list">
+    <li>
+        <a class:list={["mb-poppins", {"current": selectedCat === null}]} href={`/${lang}/articles`}>{content[lang].name}</a>
+    </li>
     {
         Object.keys(cats).map(cat => {
             return <li>
