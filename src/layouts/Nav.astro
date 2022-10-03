@@ -1,40 +1,29 @@
 ---
-import LangPicker from "../components/layout/LangPicker.astro";
+import LangPicker from '../components/layout/LangPicker.astro';
 
 const {lang} = Astro.params;
 
-const paths = {
-    'en': [
-        {'id': "1", 'name': 'home', 'slug': ''},
-        {'id': "2", 'name': 'articles', 'slug': 'articles'},
-        {'id': "3", 'name': 'test page', 'slug': 'test-page'}
-    ],
-    'ar': [
-        {'id': "1", 'name': 'إبدأ', 'slug': ''},
-        {'id': "2", 'name': 'مقالات', 'slug': 'articles'},
-        {'id': "3", 'name': 'صفحة إختبار', 'slug': 'test-page'}
-    ]
-}
+import paths from '../locals/nav.json';
 
 let currentPathId = null;
-paths[lang].forEach(path => {
-    if(Astro.url.pathname.includes(path.slug)) {
-        currentPathId = path.id;
+Object.keys(paths).forEach(path => {
+    if(Astro.url.pathname.includes(paths[path][lang].slug)) {
+        currentPathId = path;
     }
 });
 ---
 <nav>
     <ul>
         {
-            paths[lang].map(path => {
+            Object.keys(paths).map(path => {
                 return <li>
                     <a 
                         class:list={[
                             'mb-montserrat', 
-                            {'current': path.id === currentPathId}
+                            {'current': path === currentPathId}
                         ]}
-                        href={`/${lang}/${path.slug}`}>
-                        {path.name}
+                        href={`/${lang}/${paths[path][lang].slug}`}>
+                        {paths[path][lang].name}
                     </a>
                 </li>
             })

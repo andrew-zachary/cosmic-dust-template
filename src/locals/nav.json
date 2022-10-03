@@ -1,0 +1,14 @@
+{
+    "1": {
+        "en": {"name": "home", "slug": ""},
+        "ar": {"name": "إبدأ", "slug": ""}
+    },
+    "2": {
+        "en": {"name": "articles", "slug": "articles"},
+        "ar": {"name": "مقالات", "slug": "articles"}
+    },
+    "3": {
+        "en": {"name": "test page", "slug": "test-page"},
+        "ar": {"name": "صفحة إختبار", "slug": "test-page"}
+    }
+}
