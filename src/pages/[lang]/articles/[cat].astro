@@ -28,9 +28,9 @@ export async function getStaticPaths() {
 
     const params = [];
 
-    translationsMeta.forEach(metaLang => {
+    Object.keys(translationsMeta).forEach(metaLang => {
         Object.keys(cats).forEach(catKey => {
-            params.push({params: {lang: metaLang.name, cat: cats[catKey][metaLang.name].slug}});
+            params.push({params: {lang: translationsMeta[metaLang].name, cat: cats[catKey][translationsMeta[metaLang].name].slug}});
         });
     });
 

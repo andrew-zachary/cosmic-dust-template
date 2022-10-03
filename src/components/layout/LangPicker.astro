@@ -7,13 +7,21 @@ const {lang} = Astro.params;
 ---
 <div id="lang-picker" x-data="{ open: false }">
 	<div id="box-ctrls" @click="open = !open">
-		<div id="picked" class="mb-montserrat">{translationsMeta.filter(filteredLang => filteredLang.name === lang)[0].target}</div>
+		<div id="picked" class="mb-montserrat">
+			{
+				Object.keys(translationsMeta)
+				.filter(filteredLang => translationsMeta[filteredLang].name === lang)
+				.map(mappedLang => translationsMeta[mappedLang].target)
+			}
+		</div>
 		<img src={caretDownSolid} alt="" />
 	</div>
 	<ul id="box-list" x-cloak x-show="open">
 		{
-			translationsMeta.filter(filteredLang => filteredLang.name !== lang).map(mappedLang => {
-				return <li><a class="mb-montserrat" href={`/${mappedLang.name}/`}>{`${mappedLang.target}`}</a></li>
+			Object.keys(translationsMeta)
+			.filter(filteredLang => translationsMeta[filteredLang].name !== lang)
+			.map(mappedLang => {
+				return <li><a class="mb-montserrat" href={`/${translationsMeta[mappedLang].name}/`}>{`${translationsMeta[mappedLang].target}`}</a></li>
 			})
 		}
 	</ul>

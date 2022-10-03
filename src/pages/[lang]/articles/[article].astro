@@ -11,11 +11,11 @@ export async function getStaticPaths() {
 
     mdxFiles.forEach(mdxFile => {
 
-        translationsMeta.forEach(metaLang => {
+        Object.keys(translationsMeta).forEach(metaLang => {
 
             params.push({params: {
-                lang: metaLang.name, 
-                article: mdxFile['content'][metaLang.name]['slug']
+                lang: translationsMeta[metaLang].name, 
+                article: mdxFile['content'][translationsMeta[metaLang].name]['slug']
             }});
         });
     });

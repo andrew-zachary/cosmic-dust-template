@@ -3,15 +3,15 @@
 const { title } = Astro.props;
 const { lang } = Astro.params;
 
-// search for Lang Meta if no found select default
+// select Lang Meta
 import translationsMeta from '../locals/meta.json';
-const langMeta = translationsMeta.filter(metaLang => metaLang.name === lang)[0];
+const langMeta = Object.keys(translationsMeta).filter(metaLang => translationsMeta[metaLang].name === lang)[0];
 
 import Nav from './Nav.astro';
 ---
 
 <!DOCTYPE html>
-<html lang={lang} dir={langMeta.dir}>
+<html lang={lang} dir={translationsMeta[langMeta].dir}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />

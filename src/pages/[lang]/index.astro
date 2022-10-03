@@ -6,8 +6,8 @@ import translationsMeta from '../../locals/meta.json';
 
 export async function getStaticPaths() {
 
-    return translationsMeta.map(metaLang => {
-        return {params: {lang: metaLang.name}};
+    return Object.keys(translationsMeta).map(metaLang => {
+        return {params: {lang: translationsMeta[metaLang].name}};
     });
 }
 
