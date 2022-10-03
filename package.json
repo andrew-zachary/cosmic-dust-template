@@ -1,10 +1,10 @@
 {
-  "name": "astro-build-multilingual-template",
+  "name": "cosmic-dust",
   "type": "module",
   "version": "0.0.1",
   "private": true,
   "description": "This is a multilingual template for quickly building websites with a translated UI and Content using Astro-build",
-  "keywords": ["astro-build", "SSG", "MDX", "multilingual-mpa", "MPA", "multilingual-website", "website-template"],
+  "keywords": ["astro-build", "astro-build-template", "SSG", "MDX", "multilingual-mpa", "MPA", "multilingual-website", "website-template"],
   "license": "MIT",
   "scripts": {
     "dev": "astro dev",

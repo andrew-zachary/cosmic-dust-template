@@ -1,14 +1,14 @@
 {
     "1": {
-        "en": {"name": "home", "slug": ""},
-        "ar": {"name": "إبدأ", "slug": ""}
+        "en": {"name": "home", "slug": "", "url": ""},
+        "ar": {"name": "إبدأ", "slug": "", "url": ""}
     },
     "2": {
-        "en": {"name": "articles", "slug": "articles/1"},
-        "ar": {"name": "مقالات", "slug": "articles/1"}
+        "en": {"name": "articles", "slug": "articles", "url": "articles/1"},
+        "ar": {"name": "مقالات", "slug": "articles", "url": "articles/1"}
     },
     "3": {
-        "en": {"name": "test page", "slug": "test-page"},
-        "ar": {"name": "صفحة إختبار", "slug": "test-page"}
+        "en": {"name": "test page", "slug": "test-page", "url": "test-page"},
+        "ar": {"name": "صفحة إختبار", "slug": "test-page", "url": "test-page"}
     }
 }

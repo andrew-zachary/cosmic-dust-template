@@ -15,7 +15,7 @@ const content = {
     {
         Object.keys(cats).map(cat => {
             return <li>
-                <a class:list={["mb-poppins", {"current": cat === selectedCat}]} href={`/${lang}/articles/${cats[cat][lang].slug}`}>{cats[cat][lang].name}</a>
+                <a class:list={["mb-poppins", {"current": cat === selectedCat}]} href={`/${lang}/articles/${cats[cat][lang].slug}/1`}>{cats[cat][lang].name}</a>
             </li>
         })
     }
