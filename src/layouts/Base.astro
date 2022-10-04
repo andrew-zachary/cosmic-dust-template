@@ -21,14 +21,17 @@ import Nav from './Nav.astro';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+		<script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 		<script src="//unpkg.com/alpinejs" defer></script>
 	</head>
 	<body>
 		<div id="base-grid">
-			<Nav />
-			<main>
-				<slot />
-			</main>
+			<div id="base-grid-content">
+				<Nav />
+				<main>
+					<slot />
+				</main>
+			</div>
 		</div>
 	</body>
 </html>
@@ -92,29 +95,32 @@ import Nav from './Nav.astro';
 
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: 30rem 1fr;
-		justify-items: center;
+		grid-template-rows: 1fr;
 		align-items: center;
 
-		main {
-			height: 100%;
-			width: 100%;
-			@include withRtl('padding', 0 0 0 1rem, 0 1rem 0 0);
-		}
+		#base-grid-content {
+			padding-top: 4rem;
+			padding-bottom: 4rem;
 
-		.main-header {
-			font-size: 3.4rem;
-			font-weight: 500;
-			text-transform: capitalize;
-			letter-spacing: 0.1rem;
-		}
+			main {
+				height: 100%;
+				width: 100%;
+			}
 
-		.main-para {
-			font-size: 2.4rem;
-			font-weight: 300;
+			.main-header {
+				font-size: 3.4rem;
+				font-weight: 500;
+				text-transform: capitalize;
+				letter-spacing: 0.1rem;
+				@include withRtl('padding', 0 1rem 0 0.5rem, 0 0.5rem 0 1rem);
+			}
 
-			margin-top: 1.2rem;
-			@include withRtl('padding', 0 0 0 1.5rem, 0 1.5rem 0 0);
+			.main-para {
+				font-size: 2.4rem;
+				font-weight: 300;
+				margin-top: 1.2rem;
+				@include withRtl('padding', 0 1rem 0 2rem, 0 2rem 0 1rem);
+			}
 		}
 	}
 
