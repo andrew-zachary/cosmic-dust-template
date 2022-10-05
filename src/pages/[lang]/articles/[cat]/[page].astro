@@ -49,7 +49,7 @@ export async function getStaticPaths({paginate}) {
 <Base title={cat.replace('-', ' ')}>
     <Section />
     <Categories selectedCat={selectedCat} cats={cats} />
-    <Paginator lastPage={lastPage} currentPage={currentPage} />
+    <Paginator baseUrl={`/${lang}/articles/${cat}`} lastPage={lastPage} currentPage={currentPage} />
     <List mdxFiles={data} />
 </Base>
 

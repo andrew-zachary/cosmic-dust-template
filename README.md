@@ -1,10 +1,10 @@
 # Cosmic Dust Template.
 
 Astro.build multilingual template for building websites quickly with a translated UI and Content.
-## 🚀 Folders
+## :sparkles: Folders
 ### `src/components`
 Break down a single page into parts each with its own translated content.
-<pre>
+```javascript
 const content = {
     'en': {
         'title': 'welcome',
@@ -15,7 +15,7 @@ const content = {
         'p': 'قالب Astro.build متعدد اللغات لإنشاء مواقع الويب بسرعة باستخدام واجهة مستخدم ومحتوى مترجمين.'
     }
 };
-</pre>
+```
 ### `src/data`
 MDX data files each file contains translated content for a nested singular page.
 ### `src/images`
@@ -24,14 +24,14 @@ Project images to import within code.
 Main layouts and reusable components used globally.
 ### `src/locals`
 - First file `meta.json` is to produce targeted languages attributes.
-<pre>
+```javascript
 {
     "1": {"name": "en", "target": "en", "dir": "ltr"},
     "2": {"name": "ar", "target": "العربية", "dir": "rtl"}
 }
-</pre>
+```
 - Second file `nav.json` is to produce translated slugs and urls for all destinations.
-<pre>
+```javascript
 {
     "1": {
         "en": {"name": "home", "slug": "", "url": ""},
@@ -46,9 +46,9 @@ Main layouts and reusable components used globally.
         "ar": {"name": "صفحة إختبار", "slug": "test-page", "url": "test-page"}
     }
 }
-</pre>
+```
 - For example `cats.json` is an entity to be translated and used.
-<pre>
+```javascript
 {
     "1": {
         "en": {"name": "cat 1", "slug": "cat-1"},
@@ -59,6 +59,6 @@ Main layouts and reusable components used globally.
         "ar": {"name": "نوع 2", "slug": "نوع-2"}
     }
 }
-</pre>
+```
 ### `src/pages` and `src/styles`
 Normally used to build necessary pages and style them.

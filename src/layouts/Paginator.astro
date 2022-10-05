@@ -1,5 +1,5 @@
 ---
-const {lastPage, currentPage} = Astro.props;
+const {lastPage, currentPage, baseUrl} = Astro.props;
 
 const pagesNumArr = new Array(lastPage).fill(null);
 ---
@@ -7,7 +7,7 @@ const pagesNumArr = new Array(lastPage).fill(null);
     {
         pagesNumArr.map((_, index) => {
             return <li>
-                <a class:list={['mb-poppins', {'current': index+1 === currentPage}]} href={`${index+1}`}>{index+1}</a>
+                <a class:list={['mb-poppins', {'current': index+1 === currentPage}]} href={`${baseUrl}/${index+1}`}>{index+1}</a>
             </li>
         })
     }

@@ -1,5 +1,5 @@
 ---
-import LangPicker from '../components/layout/LangPicker.astro';
+import LangPicker from './LangPicker.astro';
 
 import paths from '../locals/nav.json';
 import barsSolid from '../images/bars-solid.svg';
@@ -47,6 +47,7 @@ Object.keys(paths).forEach(path => {
 
         @media screen and (max-width: 768px) {
             display: grid;
+            grid-template-columns: repeat(2, 1fr);
             align-items: center;
             justify-content: unset;
             max-width: 41.5rem;
@@ -127,6 +128,7 @@ Object.keys(paths).forEach(path => {
             @media screen and (max-width: 768px) {
                 grid-row: 1 / 2;
                 margin: 0 auto;
+                @include withRtl('margin', 0 auto, 0 auto);
             }
 
             #box-ctrls {
